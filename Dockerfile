@@ -57,7 +57,7 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 # Mount docker-entrypoint script
 COPY docker-entrypoint.sh /entrypoint.sh
 
-RUN sudo composer install && npm install && gulp --production
+# RUN composer install && npm install && gulp --production
 
 # Change uid and gid of apache to docker user uid/gid
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
@@ -69,7 +69,6 @@ RUN rm -Rf /usr/src/app/storage/app/public/* && \
 	rm -Rf /usr/src/app/storage/framework/views/* && \
 	rm -Rf /usr/src/app/bootstrap/cache/* && \
 	rm -Rf /usr/src/app/.git
-
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
