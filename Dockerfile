@@ -57,7 +57,7 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 # Mount docker-entrypoint script
 COPY docker-entrypoint.sh /entrypoint.sh
 
-RUN composer install && npm install && gulp --production
+RUN sudo composer install && npm install && gulp --production
 
 # Change uid and gid of apache to docker user uid/gid
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
