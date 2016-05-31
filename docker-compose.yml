@@ -44,7 +44,7 @@ services:
     volumes:
       - /var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '5543:5432'
     environment:
       POSTGRES_USER: docker-local
       POSTGRES_PASSWORD: docker-local
@@ -52,7 +52,7 @@ services:
       LC_ALL: C
   redis:
       ports:
-        - '6379:6379'
+        - '7558:6379'
       image: redis:alpine
       volumes:
         - /data
