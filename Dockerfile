@@ -60,7 +60,7 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 # Mount docker-entrypoint script
 COPY docker-entrypoint.sh /entrypoint.sh
 
-RUN composer install && npm install && gulp --production
+RUN php composer.phar install && npm install && gulp --production
 
 COPY . /usr/src/app
 RUN rm -Rf /usr/src/app/storage/app/public/* && \
