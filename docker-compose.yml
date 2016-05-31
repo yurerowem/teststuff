@@ -1,0 +1,58 @@
+version: '2'
+services:
+  web:
+    build: .
+    image: peopleplan/lapid
+    ports:
+      - '8888:80'
+    links:
+      - pgsql:pgsql
+      - redis:redis
+    volumes:
+      - .:/var/www/html
+    environment:
+      APP_ENV: local
+      APP_DEBUG: 'true'
+      APP_LOG: single
+      APP_KEY: base64:mULj213UybhlUO+43eIhEsAwhNQeGH5SCBmZ8RD8pxs=
+      APP_URL: http://lapid.dev:8888
+      DB_CONNECTION: pgsql
+      DB_HOST: pgsql
+      DB_PORT: 5432
+      DB_DATABASE: lapid
+      DB_USERNAME: docker-local
+      DB_PASSWORD: docker-local
+      REDIS_HOST: redis
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
+      MAIL_DRIVER: log
+      MAIL_HOST: mailtrap.io
+      MAIL_PORT: 2525
+      MAIL_USERNAME: 25c9a0958880c6
+      MAIL_PASSWORD: 2513d58baca720
+      MAIL_ENCRYPTION: tls
+      CACHE_DRIVER: file
+      SESSION_DRIVER: file
+      QUEUE_DRIVER: sync
+      LRS_DRIVER: http
+      LRS_URL: https://lrs-staging.peopleplan.com.au/data/xAPI/
+      LRS_USERNAME: 4f63130f9ba186fb55aef8198d039e0a308ea3ce
+      LRS_PASSWORD: b27ad4e97741b7d9d5e5193f5b945f5fcacd23f9
+      CDN_URL: http://lapid.dev:8888/storage
+  pgsql:
+    image: postgres:9.5
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: docker-local
+      POSTGRES_PASSWORD: docker-local
+      POSTGRES_DB: lapid
+      LC_ALL: C
+  redis:
+      ports:
+        - '6379:6379'
+      image: redis:alpine
+      volumes:
+        - /data
