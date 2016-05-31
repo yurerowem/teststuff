@@ -18,4 +18,4 @@ before_install:
 script:
     - docker version
     - docker-compose up -d
-    - docker exec -it blogstuff_web_1 vendor/bin/phpunit
+    - docker exec -it teststuff_web_1 vendor/bin/phpunit
