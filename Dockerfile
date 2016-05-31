@@ -28,7 +28,7 @@ RUN set -xe \
 
 # Install composer
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
-RUN curl -sS https://getcomposer.org/installer | php mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | mv composer.phar /usr/local/bin/composer
 
 # Install Node.js
 ENV NVM_DIR /usr/local/.nvm
