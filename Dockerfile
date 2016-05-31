@@ -27,7 +27,8 @@ RUN set -xe \
 		opcache
 
 # Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php mv composer.phar /usr/local/bin/composer
 
 # Install Node.js
 ENV NVM_DIR /usr/local/.nvm
@@ -60,7 +61,7 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 # Mount docker-entrypoint script
 COPY docker-entrypoint.sh /entrypoint.sh
 
-RUN php composer.phar install && npm install && gulp --production
+RUN composer install && npm install && gulp --production
 
 COPY . /usr/src/app
 RUN rm -Rf /usr/src/app/storage/app/public/* && \
