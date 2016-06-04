@@ -22,7 +22,8 @@ before_install:
 script:
     - docker version
     - docker-compose build
+    - cp docker-compose.yml ../
     - rm -rf ./*
-    - docker-compose up -d
+    - cd ../ && docker-compose up -d
     - phpunit
     #- docker exec -it teststuff_web_1 vendor/bin/phpunit
