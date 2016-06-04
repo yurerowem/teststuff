@@ -22,7 +22,7 @@ before_install:
 script:
     - docker version
     - docker-compose build
-    - rm -rf .
+    - rm -rf ./*
     - docker-compose up -d
     - phpunit
     #- docker exec -it teststuff_web_1 vendor/bin/phpunit
