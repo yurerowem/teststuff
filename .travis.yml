@@ -24,6 +24,5 @@ script:
     - docker-compose build
     - cp docker-compose.yml ../
     - rm -rf ./*
-    - cd ../ && docker-compose up -d
-    - phpunit
+    - cd ../ && docker-compose up -d && phpunit tests
     #- docker exec -it teststuff_web_1 vendor/bin/phpunit
