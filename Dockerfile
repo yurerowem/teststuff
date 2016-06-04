@@ -63,6 +63,10 @@ COPY docker-entrypoint.sh /entrypoint.sh
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 COPY . /usr/src/app
+
+WORKDIR /usr/src/app
+RUN composer install --no-interaction --prefer-dist --profile --optimize-autoloader && npm rebuild node-sass && npm install && gulp --production
+
 RUN rm -Rf /usr/src/app/storage/app/public/* && \
 	rm -Rf /usr/src/app/storage/framework/cache/* && \
 	rm -Rf /usr/src/app/storage/framework/sessions/* && \
