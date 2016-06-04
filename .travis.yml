@@ -1,5 +1,9 @@
 sudo: required
 
+language: php
+php:
+  - '7.0'
+
 services:
   - docker
 
@@ -18,4 +22,5 @@ before_install:
 script:
     - docker version
     - docker-compose up -d
-    - docker exec -it teststuff_web_1 vendor/bin/phpunit
+    - phpunit
+    #- docker exec -it teststuff_web_1 vendor/bin/phpunit
