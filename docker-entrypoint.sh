@@ -8,6 +8,7 @@ if [[ "$1" == apache2* ]]; then
 		chgrp -R www-data /var/www/html
 		chmod -R ug+rwx /var/www/html/storage /var/www/html/bootstrap/cache
 
+		sleep 15
 		php artisan migrate
 fi
 
