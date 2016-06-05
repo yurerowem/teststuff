@@ -21,7 +21,7 @@ before_install:
 
 script:
     - docker version
-    - docker-compose build
+#    - docker-compose build
 #    - cp docker-compose.yml ../
 #    - rm -rf ./*
 #    - cd ../ && docker-compose up -d && phpunit tests/TestCase.php
