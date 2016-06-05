@@ -2,14 +2,14 @@ version: '2'
 services:
   web:
     build: .
-    image: peopleplan/lapid
+    image: peopleplan/testt
     ports:
       - '8888:80'
     links:
       - pgsql:pgsql
       - redis:redis
     volumes:
-      - .:/var/www/html
+      - /var/www/html
     environment:
       APP_ENV: local
       APP_DEBUG: 'true'
