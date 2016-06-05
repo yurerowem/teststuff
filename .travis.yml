@@ -26,4 +26,4 @@ script:
 #    - rm -rf ./*
 #    - cd ../ && docker-compose up -d && phpunit tests/TestCase.php
     - docker-compose up -d
-    - docker exec -t teststuff_web_1 vendor/bin/phpunit
+    - ./test.sh
